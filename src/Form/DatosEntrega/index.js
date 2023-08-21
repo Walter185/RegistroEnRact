@@ -35,8 +35,8 @@ const DatosEntrega = ({updateStep}) => {
           const valid = validarInput(value);
           setAddress({ value, valid});
         }}
-        error={address.valid == false}
-        helperText={address.valid == false && "Ingresa al menos 4 caracteres."}
+        error={address.valid === false}
+        helperText={address.valid === false && "Ingresa al menos 4 caracteres."}
       />
       <TextField
         label="Ciudad"
@@ -50,8 +50,8 @@ const DatosEntrega = ({updateStep}) => {
           const valid = validarInput(value);
           setCity({ value, valid})
         }}
-        error={city.valid == false}
-        helperText={city.valid == false && "Ingresa al menos 4 caracteres."}
+        error={city.valid === false}
+        helperText={city.valid === false && "Ingresa al menos 4 caracteres."}
       />
       <TextField
         label="Estado/Provincia"
@@ -65,8 +65,8 @@ const DatosEntrega = ({updateStep}) => {
           const valid = validarInput(value);
           setProvince({ value, valid });
         }}
-        error={province.valid == false}
-        helperText={province.valid == false && "Ingresa al menos 4 caracteres."}
+        error={province.valid === false}
+        helperText={province.valid === false && "Ingresa al menos 4 caracteres."}
       />
       <Button variant="contained" type="submit">
         Crear cuenta

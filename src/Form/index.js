@@ -1,19 +1,19 @@
 import { Box, Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LogoSpace, FormSpace, Img } from "./styles";
 import DatosUsuario from "./DatosUsuario";
 import DatosPersonales from "./DatosPersonales";
 import DatosEntrega from "./DatosEntrega";
 import Complete from "./Complete";
 import Stepper from "../Stepper";
+import Step from "./Step";
+
+// validaciones
+import { validarEmail, validarPassword } from "./DatosUsuario/validaciones";
 
 const Form = () => {
-  const [step, setStep] = useState(2);
-
-  //step = 0 -> <DatosUsuario />
-  //step = 1 -> <DatosPersonales />
-  //step = 2 -> <DatosEntrega />
-  //step = 3 -> <Complete />
+  const [step, setStep] = useState(0);
+  const [pasos, setPasos] = useState({});
 
   const updateStep = (step) => {
     console.log("actualizar step", step);
@@ -27,6 +27,42 @@ const Form = () => {
       3: <Complete />,
     };
   
+  const onSubmit = () => { };
+
+  const handleChange = (element, position, currentStep, validator) => {
+    const value = element.target.value;
+    console.log(value);
+    console.log("position", position);
+    console.log("currentStep", currentStep);
+    console.log("validato", validator);
+  }
+  
+  const stepsFlow = {
+    0: {
+      inputs: [
+        {
+          label: "Correo electrónico",
+          type: "email",
+          value: "",
+          valid: null,
+          onChange: handleChange,
+          helperText: "Ingresa un correo electrónico válido",
+          validator: validarEmail,
+        },
+        { 
+          label: "Contraseña",
+          type: "password",
+          value: "",
+          valid: null,
+          onChange: handleChange,
+          helperText: "Ingresa una contraseña válida, al menos 8 caracteres y maximo 20",
+          validator: validarPassword,
+        }
+      ],
+      buttonText: "Siguiente",
+      onSubmit,
+    },
+  };
 
   return (
     <Box
@@ -42,10 +78,8 @@ const Form = () => {
       </LogoSpace>
       <FormSpace>
         {step < 3 && <Stepper step={step} />}
-        {/* <DatosUsuario />
-        <DatosPersonales />
-        <DatosEntrega /> */}
-        {steps[step]}
+        {/* {steps[step]} */}
+        <Step data={ stepsFlow[step]} step={step}/>
       </FormSpace>
     </Box>
   );

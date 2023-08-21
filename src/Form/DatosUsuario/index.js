@@ -7,23 +7,6 @@ const DatosUsuario = ({updateStep}) => {
   const [email, setEmail] = useState({ value: "", valid: null});
   const [password, setPassword] = useState({ value: "", valid: null});
 
-// class DatosUsuario extends React.Component {
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     email: {
-  //       value: '',
-  //       valid: true
-  //     },
-  //     password: {
-  //       value: '',
-  //       valid: true
-  //     }
-  //   }
-  // }
-
-  // render() {
     return (
       <Box
         component="form"
@@ -52,12 +35,10 @@ const DatosUsuario = ({updateStep}) => {
           fullWidth
           margin="dense"
           type="email"
-          error={email.valid == false}
-          helperText={email.valid == false && "Ingresa un correo electrónico válido"}
-          // value={ this.state.email.value }
+          error={email.valid === false}
+          helperText={email.valid === false && "Ingresa un correo electrónico válido"}
           value={ email.value }
           onChange={ (input) => { 
-            //  this.setState({ email: { value: input.target.value}})
                const email = input.target.value
                const valido = validarEmail(email);
                 setEmail({value: email, valid: valido});
@@ -67,14 +48,12 @@ const DatosUsuario = ({updateStep}) => {
           label="Contraseña"
           variant="outlined"
           fullWidth
-          error={password.valid == false}
-          helperText={password.valid == false && "Ingresa una contraseña válida, al menos 8 caracteres y maximo 20."}
+          error={password.valid === false}
+          helperText={password.valid === false && "Ingresa una contraseña válida, al menos 8 caracteres y maximo 20."}
           margin="dense"
           type="password"
-          // value={ this.state.password.value }
           value={ password.value }
           onChange={ (input) =>
-            // this.setState({ password: { value: input.target.value}})
              {  const password = input.target.value
                 setPassword({value: password, valid: validarPassword(password)}) }
           }

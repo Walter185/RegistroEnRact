@@ -36,8 +36,8 @@ const DatosPersonales = ({updateStep}) => {
           setName({ value, valid});
           console.log(value, valid);
         }}
-        error={name.valid == false}
-        helperText={name.valid == false && "Ingresa al menos 2 caracteres y maximo 30."}
+        error={name.valid === false}
+        helperText={name.valid === false && "Ingresa al menos 2 caracteres y maximo 30."}
       />
       <TextField
         label="Apellidos"
@@ -52,8 +52,8 @@ const DatosPersonales = ({updateStep}) => {
           setLastName({ value, valid});
           console.log(value, valid);
         }}
-        error={lastName.valid == false}
-        helperText={lastName.valid == false && "Ingresa al menos 2 caracteres y maximo 50."}
+        error={lastName.valid === false}
+        helperText={lastName.valid === false && "Ingresa al menos 2 caracteres y maximo 50."}
       />
       <TextField
         label="Número telefónico"
@@ -69,8 +69,8 @@ const DatosPersonales = ({updateStep}) => {
           setPhone({ value, valid});
           console.log(value, valid);
         }}
-        error={phone.valid == false}
-        helperText={phone.valid == false && "Ingresa al menos 8 digitos y maximo 14."}
+        error={phone.valid === false}
+        helperText={phone.valid === false && "Ingresa al menos 8 digitos y maximo 14."}
       />
       <Button variant="contained" type="submit">
         Siguiente
